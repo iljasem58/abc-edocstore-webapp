@@ -74,7 +74,8 @@
       <li><button mat-raised-button color="warn">REMOVE</button></li>
       <li><button mat-raised-button color="warn">DELETE</button></li>
       <li><button mat-raised-button>ACCESS CONTROL</button></li>
-      <li><button mat-raised-button (click)="toggleComment()" [disabled]="!selectedRow">COMMENT</button></li>
+      <li><button mat-raised-button (click)="toggleComment()" [disabled]="!selectedRow || !folderSelected.length">COMMENT</button></li>
+<!--      <li><button mat-raised-button (click)="showPreview()" [disabled]="!selectedRow || !folderSelected.length || !selectedRow.img">Preview</button></li>-->
     </ul>
     <hr />
     <div class="table-container">
@@ -103,6 +104,7 @@
         </mat-option>
       </mat-select>
     </mat-form-field>
+
     <h5>Your selected comment: {{selected}}</h5>
 
     <form class="example-form">
@@ -110,7 +112,7 @@
       <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Leave a comment</mat-label>
         <textarea matInput placeholder="Ex. Please, dear colleges..."
-                  type="text" #box ></textarea>
+                  type="text" #box [value]="selected"></textarea>
       </mat-form-field>
     </form>
     <button mat-raised-button (click)="getVal(box.value, folderSelected)">Submit</button>

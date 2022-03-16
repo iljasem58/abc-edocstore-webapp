@@ -6,6 +6,7 @@ export interface PeriodicElement {
   modified: string;
   content: string;
   comment: string;
+  img?: string;
 }
 
 export interface DataCollection {
@@ -90,6 +91,7 @@ export const DATA_COLLECTION: DataCollection[] = [
         modified: '31.01.2021',
         content: 'document',
         comment: '',
+        img: 'https://via.placeholder.com/150/FF0000/FFFFFF?Text=Down.com',
       },
       {
         type: 'docx',

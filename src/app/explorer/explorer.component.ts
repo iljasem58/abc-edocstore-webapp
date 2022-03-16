@@ -60,6 +60,8 @@ export class ExplorerComponent implements OnInit {
     this.selectedRow = value;
   }
 
+
+
   getVal(val: string, folderSelected: string) {
     DATA_COLLECTION.forEach((folder) => {
       if(folderSelected === folder.folderName){
