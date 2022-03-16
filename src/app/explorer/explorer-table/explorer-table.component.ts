@@ -4,9 +4,10 @@ import {
   Input,
   OnChanges,
   OnInit,
-  SimpleChanges,
-  ViewChild,
+  ViewChild
 } from '@angular/core';
+import {MatPaginator} from '@angular/material/paginator';
+import {MatTableDataSource} from '@angular/material/table';
 import {DATA_COLLECTION, DEFAULT_DATA, PeriodicElement} from 'src/app/helpers/data';
 
 @Component({
@@ -14,11 +15,9 @@ import {DATA_COLLECTION, DEFAULT_DATA, PeriodicElement} from 'src/app/helpers/da
   templateUrl: './explorer-table.component.html',
   styleUrls: ['./explorer-table.component.css'],
 })
-export class ExplorerTableComponent implements OnInit, OnChanges{
+export class ExplorerTableComponent implements OnInit, OnChanges {
   @Input() selectedFolder!: string;
-
-/*  @ViewChild(MatPaginator)
-  paginator: MatPaginator;*/
+  @Input() clickedRow!: any;
 
   displayedColumns: string[] = [
     'type',
@@ -30,23 +29,28 @@ export class ExplorerTableComponent implements OnInit, OnChanges{
     'comment',
   ];
   // dataSource = this.setTableData(this.selectedFolder);
-  dataSource = DEFAULT_DATA;
+  dataSource = new MatTableDataSource<PeriodicElement> (DEFAULT_DATA);
 
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor() {
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
   }
+
+  constructor() {}
+
 
   ngOnInit(): void {
   }
 
-  ngOnChanges(): void {
-    this.selectedFolder.length > 0 && this.setTableData(this.selectedFolder);
-  }
+   ngOnChanges(): void {
+     this.selectedFolder.length > 0 && this.setTableData(this.selectedFolder);
+   }
 
   setTableData(selectedFolder: string) {
     DATA_COLLECTION.forEach((folder) => {
       if (selectedFolder === folder.folderName) {
-        this.dataSource = folder.data;
+        this.dataSource = new MatTableDataSource<PeriodicElement>(folder.data);
       }
       return;
     });

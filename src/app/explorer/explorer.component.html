@@ -80,6 +80,7 @@
     <div class="table-container">
       <app-explorer-table
         [selectedFolder]="folderSelected"
+        [clickedRow]="rowClicked"
       ></app-explorer-table>
     </div>
   </mat-card>
@@ -112,7 +113,7 @@
                   type="text" #box ></textarea>
       </mat-form-field>
     </form>
-    <button mat-raised-button (click)="getVal(box.value)">Submit</button>
+    <button mat-raised-button (click)="getVal(box.value, folderSelected,rowClicked )">Submit</button>
     <p>{{displayVal}}</p>
   </mat-card>
 </div>

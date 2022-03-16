@@ -2,8 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatTreeNestedDataSource } from '@angular/material/tree';
 import { NestedTreeControl } from '@angular/cdk/tree';
-import { Folders, TREE_DATA } from '../helpers/data';
-import { DataCollection, DATA_COLLECTION } from '../helpers/data';
+import {Folders, PeriodicElement, TREE_DATA} from '../helpers/data';
+import { DataCollection, DATA_COLLECTION, DEFAULT_DATA } from '../helpers/data';
+import {MatTableDataSource} from "@angular/material/table";
 
 interface Comment {
   value: string;
@@ -22,6 +23,7 @@ export class ExplorerComponent implements OnInit {
   treeExpanded: boolean = false;
   commentExpanded: boolean = false;
   folderSelected: string = '';
+  rowClicked: any = null;
   selected = 'Not chosen';
   textarea= 'your comment';
   displayVal:string='';
@@ -45,16 +47,26 @@ export class ExplorerComponent implements OnInit {
     this.treeExpanded = !this.treeExpanded;
   }
 
-  renameDoc() {
-    this.dataColl.data;
-  }
-
   toggleComment() {
     this.commentExpanded = !this.commentExpanded;
   }
 
-  getVal(val: string) {
+  renameDoc() {
+    this.dataColl.data;
+  }
 
+  getVal(val: string, folderSelected: string, rowClicked:any) {
+    DATA_COLLECTION.forEach((folder) => {
+      if(folderSelected === folder.folderName){
+        folder.data.forEach((item)=>{
+          if (item.id === rowClicked.id) {
+            item.comment = val;
+          }
+        })
+      }
+      return;
+    });
+    this.displayVal= val;
   }
 
   ngOnInit(): void {}
