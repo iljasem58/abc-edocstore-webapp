@@ -1,0 +1,53 @@
+<mat-card>
+  <mat-card-title>License information</mat-card-title>
+  <form class="form">
+    <mat-form-field class="full-width" appearance="fill">
+      <mat-label>Application ID</mat-label>
+      <input matInput disabled value="UEn0Vh8YQEj9/7+a8S24bVb3W+E=" />
+    </mat-form-field>
+    <mat-icon aria-hidden="false" (click)="onShowAppIdClick()"
+      >contact_support</mat-icon
+    >
+    <p class="description" *ngIf="showAppId">
+      The Current eDocStore Application ID. <strong>NB!</strong> The Application
+      ID depends on the accounts of the CosmosDB and the Azure Blob Storage. If
+      any of them changes (e.g. by changing connection string), then the
+      Application ID WILL change and the license bought for the previous
+      Application ID will not work (it will have 'Invalid' status).
+    </p>
+    <mat-form-field class="full-width mat-form-field-top" appearance="fill">
+      <mat-label>License status</mat-label>
+      <input matInput disabled value="Invalid" />
+    </mat-form-field>
+    <mat-icon aria-hidden="false" (click)="onShowLicenseStatusClick()"
+      >contact_support</mat-icon
+    >
+    <div *ngIf="showLicenseStatus" class="description">
+      <span> Indicates current license status. </span>
+      <ul>
+        <li>
+          <strong>License is missing!</strong> - the license code element
+          ('licenseKey') or it's value is not found in the Application
+          configuration.
+        </li>
+        <li>
+          <strong>Active</strong> - the license is valid and currently
+          effective.
+        </li>
+        <li>
+          <strong>Sheduled</strong> - the license is valid, but it's effective
+          period is not started yet.
+        </li>
+        <li>
+          <strong>Expired</strong> - the license is valid, but it's effective
+          period is ended. To be able to continue the usage the service, a new
+          license must be provided.
+        </li>
+        <li>
+          <strong>Invalid</strong> - the license is invalid, detailed exception
+          can be found in application logs.
+        </li>
+      </ul>
+    </div>
+  </form>
+</mat-card>

@@ -1,0 +1,26 @@
+table {
+  width: 100%;
+  cursor: pointer;
+}
+
+.mat-elevation-z8 {
+  box-shadow: none;
+}
+
+.mat-header-row {
+  background-color: #b69ee0;
+}
+
+.mat-header-cell {
+  font-weight: bold;
+  font-size: large;
+}
+
+.add-button {
+  margin-top: 1rem;
+}
+
+mat-card {
+  width: 70%;
+  margin: auto;
+}

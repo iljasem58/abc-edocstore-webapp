@@ -1,0 +1,118 @@
+<div class="explorer-container">
+  <mat-card
+    class="tree-card"
+    [ngClass]="{
+      hidden: !treeExpanded
+    }"
+  >
+    <mat-card-title>Navigation</mat-card-title>
+    <mat-tree
+      [dataSource]="dataSource"
+      [treeControl]="treeControl"
+      class="example-tree"
+    >
+      <!-- This is the tree node template for leaf nodes -->
+      <!-- There is inline padding applied to this node using styles.
+        This padding value depends on the mat-icon-button width. -->
+      <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
+        <span class="name" (click)="folderSelected = node.name">
+          {{ node.name }}
+        </span>
+      </mat-tree-node>
+      <!-- This is the tree node template for expandable nodes -->
+      <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
+        <div class="mat-tree-node" (click)="folderSelected = node.name">
+          <button
+            mat-icon-button
+            matTreeNodeToggle
+            [attr.aria-label]="'Toggle ' + node.name"
+          >
+            <mat-icon class="mat-icon-rtl-mirror">
+              {{
+              treeControl.isExpanded(node) ? "expand_more" : "chevron_right"
+              }}
+            </mat-icon>
+          </button>
+          <span class="name"> {{ node.name }}</span>
+        </div>
+        <!-- There is inline padding applied to this div using styles.
+              This padding value depends on the mat-icon-button width.  -->
+        <div
+          [class.example-tree-invisible]="!treeControl.isExpanded(node)"
+          role="group"
+        >
+          <ng-container matTreeNodeOutlet></ng-container>
+        </div>
+      </mat-nested-tree-node>
+    </mat-tree>
+  </mat-card>
+  <mat-card
+    [ngClass]="{
+      'table-card': !treeExpanded,
+      'table-card-expanded': treeExpanded,
+      'table-comment': !commentExpanded,
+      'table-comment-expanded': commentExpanded
+    }"
+  >
+    <mat-card-title
+    >CMIS Explorer
+      <span *ngIf="folderSelected.length > 0"
+      >/{{ folderSelected }}</span
+      ></mat-card-title
+    >
+    <ul>
+      <li>
+        <button mat-raised-button color="primary" (click)="toggleTree()">
+          TOGGLE TREE
+        </button>
+      </li>
+      <li><button mat-raised-button>INSPECT</button></li>
+      <li><button mat-raised-button>INSERT</button></li>
+      <li><button mat-raised-button>MOVE</button></li>
+      <li><button mat-raised-button (click)="renameDoc()">RENAME</button></li>
+      <li><button mat-raised-button>NEW FOLDER</button></li>
+      <li><button mat-raised-button color="warn">REMOVE</button></li>
+      <li><button mat-raised-button color="warn">DELETE</button></li>
+      <li><button mat-raised-button>ACCESS CONTROL</button></li>
+      <li><button mat-raised-button (click)="toggleComment()">COMMENT</button></li>
+    </ul>
+    <hr />
+    <div class="table-container">
+      <app-explorer-table
+        [selectedFolder]="folderSelected"
+      ></app-explorer-table>
+    </div>
+  </mat-card>
+
+  <mat-card
+    class="comment-card"
+    [ngClass]="{
+      hidden: !commentExpanded
+    }"
+  >
+    <mat-card-title>Add a comment</mat-card-title>
+
+    <h4>Default comment</h4>
+    <mat-form-field appearance="fill">
+      <mat-label>None</mat-label>
+      <mat-select [(value)]="selected">
+        <mat-option>None</mat-option>
+        <mat-option *ngFor="let comment of comments" [value]="comment.value">
+          {{comment.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <h5>Your selected comment: {{selected}}</h5>
+
+    <form class="example-form">
+      <h4>Write your comment</h4>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Leave a comment</mat-label>
+        <textarea matInput placeholder="Ex. Please, dear colleges..."
+                  type="text" #box ></textarea>
+      </mat-form-field>
+    </form>
+    <button mat-raised-button (click)="getVal(box.value)">Submit</button>
+    <p>{{displayVal}}</p>
+  </mat-card>
+</div>

@@ -1,0 +1,21 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+}
+
+a {
+  text-decoration: none;
+  margin-left: 1rem;
+}
+
+mat-icon {
+  height: 40px;
+  width: 40px;
+  font-size: 40px;
+  margin-right: 5px;
+}

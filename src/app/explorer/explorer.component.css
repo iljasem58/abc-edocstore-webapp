@@ -1,0 +1,97 @@
+ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+}
+
+li {
+  margin-right: 1rem;
+}
+
+.table-card {
+  width: 100%;
+  margin-right: 2rem;
+  margin-left: 2rem;
+}
+
+.table-card-expanded {
+  width: 100%;
+  margin-right: 2rem;
+}
+.table-comment {
+  width: 100%;
+  margin-right: 2rem;
+  margin-left: 2rem;
+}
+
+.table-comment-expanded {
+  width: 100%;
+  margin-left: 2rem;
+}
+
+.tree-card {
+  /* width: 10rem; */
+  margin-left: 2rem;
+  margin-right: 1rem;
+  /* overflow-x: auto; */
+}
+
+.hidden {
+  display: none;
+}
+
+.tree-card {
+  margin-left: 2rem;
+  margin-right: 1rem;
+}
+
+.table-container {
+  display: block;
+  justify-content: space-between;
+}
+
+.explorer-container {
+  display: flex;
+}
+
+app-explorer-table {
+  margin-top: 2rem;
+  width: 49%;
+}
+
+/* tree style */
+
+.example-tree-invisible {
+  display: none;
+}
+
+.example-tree ul,
+.example-tree li {
+  margin-top: 0;
+  margin-bottom: 0;
+  list-style-type: none;
+}
+
+/*
+ * This padding sets alignment of the nested nodes.
+ */
+.example-tree .mat-nested-tree-node div[role="group"] {
+  padding-left: 40px;
+}
+
+/*
+ * Padding for leaf nodes.
+ * Leaf nodes need to have padding so as to align with other non-leaf nodes
+ * under the same parent.
+ */
+.example-tree div[role="group"] > .mat-tree-node {
+  padding-left: 40px;
+}
+
+.name {
+  cursor: pointer;
+}
+
+.comment-card {
+  margin-right: 1rem;
+}

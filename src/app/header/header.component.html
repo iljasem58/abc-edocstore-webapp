@@ -1,0 +1,49 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <mat-icon aria-hidden="false">data_array</mat-icon>
+    <span>{{ appTitle }}</span>
+    <span class="example-spacer"></span>
+    <ul>
+      <li>
+        <a
+          routerLink="/collection"
+          routerLinkActive="mat-raised-button"
+          mat-button
+          color="accent"
+        >
+          CosmosDB Collection
+        </a>
+      </li>
+      <li>
+        <a
+          routerLink="/repositories"
+          routerLinkActive="mat-raised-button"
+          mat-button
+          color="accent"
+        >
+          CMIS Repositories
+        </a>
+      </li>
+      <li>
+        <a
+          routerLink="/explorer"
+          routerLinkActive="mat-raised-button"
+          mat-button
+          color="accent"
+        >
+          CMIS Explorer
+        </a>
+      </li>
+      <li>
+        <a
+          routerLink="/license"
+          routerLinkActive="mat-raised-button"
+          mat-button
+          color="accent"
+        >
+          License Info
+        </a>
+      </li>
+    </ul>
+  </mat-toolbar-row>
+</mat-toolbar>
