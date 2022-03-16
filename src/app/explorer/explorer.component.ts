@@ -23,7 +23,7 @@ export class ExplorerComponent implements OnInit {
   treeExpanded: boolean = false;
   commentExpanded: boolean = false;
   folderSelected: string = '';
-  rowClicked: string = '';
+  selectedRow: any = null;
   selected = 'Not chosen';
   textarea= 'your comment';
   displayVal:string='';
@@ -57,20 +57,20 @@ export class ExplorerComponent implements OnInit {
 
   setRowClicked(value:any){
     console.log(value)
+    this.selectedRow = value;
   }
 
-  getVal(val: string, folderSelected: string, rowClicked:any) {
+  getVal(val: string, folderSelected: string) {
     DATA_COLLECTION.forEach((folder) => {
       if(folderSelected === folder.folderName){
         folder.data.forEach((item)=>{
-          if (item.id === rowClicked.id) {
+          if (item.id === this.selectedRow.id) {
             item.comment = val;
           }
         })
       }
       return;
     });
-    this.displayVal= val;
   }
 
   ngOnInit(): void {}

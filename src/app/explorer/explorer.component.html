@@ -74,7 +74,7 @@
       <li><button mat-raised-button color="warn">REMOVE</button></li>
       <li><button mat-raised-button color="warn">DELETE</button></li>
       <li><button mat-raised-button>ACCESS CONTROL</button></li>
-      <li><button mat-raised-button (click)="toggleComment()">COMMENT</button></li>
+      <li><button mat-raised-button (click)="toggleComment()" [disabled]="!selectedRow">COMMENT</button></li>
     </ul>
     <hr />
     <div class="table-container">
@@ -113,7 +113,6 @@
                   type="text" #box ></textarea>
       </mat-form-field>
     </form>
-    <button mat-raised-button (click)="getVal(box.value, folderSelected,rowClicked )">Submit</button>
-    <p>{{displayVal}}</p>
+    <button mat-raised-button (click)="getVal(box.value, folderSelected)">Submit</button>
   </mat-card>
 </div>

@@ -43,6 +43,12 @@ export class ExplorerTableComponent implements OnInit, OnChanges {
   ngOnInit(): void {
   }
 
+  addRow(row:any){
+    this.clickedRows.add(row);
+    this.clickedRow.emit(row);
+  }
+
+
    ngOnChanges(): void {
      this.selectedFolder.length > 0 && this.setTableData(this.selectedFolder);
    }
