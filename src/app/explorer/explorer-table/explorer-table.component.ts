@@ -1,9 +1,9 @@
 import {
   AfterViewInit,
-  Component,
+  Component, EventEmitter,
   Input,
   OnChanges,
-  OnInit,
+  OnInit, Output,
   ViewChild
 } from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
@@ -16,8 +16,8 @@ import {DATA_COLLECTION, DEFAULT_DATA, PeriodicElement} from 'src/app/helpers/da
   styleUrls: ['./explorer-table.component.css'],
 })
 export class ExplorerTableComponent implements OnInit, OnChanges {
-  @Input() selectedFolder!: string;
-  @Input() clickedRow!: any;
+  @Input() selectedFolder: string;
+  @Output() clickedRow: EventEmitter<string> = new EventEmitter<string>();
 
   displayedColumns: string[] = [
     'type',
@@ -51,6 +51,7 @@ export class ExplorerTableComponent implements OnInit, OnChanges {
     DATA_COLLECTION.forEach((folder) => {
       if (selectedFolder === folder.folderName) {
         this.dataSource = new MatTableDataSource<PeriodicElement>(folder.data);
+        this.dataSource.paginator= this.paginator;
       }
       return;
     });

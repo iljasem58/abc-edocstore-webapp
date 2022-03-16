@@ -80,7 +80,7 @@
     <div class="table-container">
       <app-explorer-table
         [selectedFolder]="folderSelected"
-        [clickedRow]="rowClicked"
+        (clickedRow) = "setRowClicked($event)"
       ></app-explorer-table>
     </div>
   </mat-card>

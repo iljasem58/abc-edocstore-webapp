@@ -23,7 +23,7 @@ export class ExplorerComponent implements OnInit {
   treeExpanded: boolean = false;
   commentExpanded: boolean = false;
   folderSelected: string = '';
-  rowClicked: any = null;
+  rowClicked: string = '';
   selected = 'Not chosen';
   textarea= 'your comment';
   displayVal:string='';
@@ -53,6 +53,10 @@ export class ExplorerComponent implements OnInit {
 
   renameDoc() {
     this.dataColl.data;
+  }
+
+  setRowClicked(value:any){
+    console.log(value)
   }
 
   getVal(val: string, folderSelected: string, rowClicked:any) {
