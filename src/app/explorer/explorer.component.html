@@ -69,12 +69,14 @@
       <li><button mat-raised-button>INSPECT</button></li>
       <li><button mat-raised-button>INSERT</button></li>
       <li><button mat-raised-button>MOVE</button></li>
-      <li><button mat-raised-button (click)="renameDoc()">RENAME</button></li>
+      <li><button mat-raised-button>RENAME</button></li>
       <li><button mat-raised-button>NEW FOLDER</button></li>
       <li><button mat-raised-button color="warn">REMOVE</button></li>
       <li><button mat-raised-button color="warn">DELETE</button></li>
       <li><button mat-raised-button>ACCESS CONTROL</button></li>
-      <li><button mat-raised-button (click)="toggleComment()" [disabled]="!selectedRow || !folderSelected.length">COMMENT</button></li>
+      <li><button mat-raised-button (click)="toggleComment()" [disabled]="!selectedRow || !folderSelected.length">
+        COMMENT</button>
+      </li>
 <!--      <li><button mat-raised-button (click)="showPreview()" [disabled]="!selectedRow || !folderSelected.length || !selectedRow.img">Preview</button></li>-->
     </ul>
     <hr />
@@ -98,14 +100,13 @@
     <mat-form-field appearance="fill">
       <mat-label>None</mat-label>
       <mat-select [(value)]="selected">
-        <mat-option>None</mat-option>
         <mat-option *ngFor="let comment of comments" [value]="comment.value">
           {{comment.viewValue}}
         </mat-option>
       </mat-select>
     </mat-form-field>
 
-    <h5>Your selected comment: {{selected}}</h5>
+  <!--  <h5>Your selected comment: {{selected}}</h5>-->
 
     <form class="example-form">
       <h4>Write your comment</h4>

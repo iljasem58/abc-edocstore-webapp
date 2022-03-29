@@ -26,9 +26,9 @@ export class ExplorerComponent implements OnInit {
   selectedRow: any = null;
   selected = 'Not chosen';
   textarea= 'your comment';
-  displayVal:string='';
 
   comments: Comment[] = [
+    {value: '', viewValue: 'None'},
     {value: 'Done', viewValue: 'Done'},
     {value: 'In progress', viewValue: 'In progress'},
     {value: 'Review the document', viewValue: 'Please review'},
@@ -37,7 +37,6 @@ export class ExplorerComponent implements OnInit {
 
   constructor() {
     this.dataSource.data = TREE_DATA;
-    this.dataColl.data = DATA_COLLECTION;
   }
 
   hasChild = (_: number, node: Folders) =>
@@ -51,16 +50,10 @@ export class ExplorerComponent implements OnInit {
     this.commentExpanded = !this.commentExpanded;
   }
 
-  renameDoc() {
-    this.dataColl.data;
-  }
-
   setRowClicked(value:any){
     console.log(value)
     this.selectedRow = value;
   }
-
-
 
   getVal(val: string, folderSelected: string) {
     DATA_COLLECTION.forEach((folder) => {

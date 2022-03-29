@@ -19,13 +19,14 @@ import { MatTreeModule } from '@angular/material/tree';
 import { MatIconModule } from '@angular/material/icon';
 import { CreateRepositoryComponent } from './repositories/create-repository/create-repository.component';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { ExplorerTableComponent } from './explorer/explorer-table/explorer-table.component';
+import {ExplorerTableComponent, PreviewBox} from './explorer/explorer-table/explorer-table.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import {MatOptionModule} from "@angular/material/core";
 import {MatPaginatorModule} from "@angular/material/paginator";
-
+import {MatSortModule} from "@angular/material/sort";
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import {MatPaginatorModule} from "@angular/material/paginator";
     CreateRepositoryComponent,
     ExplorerTableComponent,
     LoginComponent,
+    PreviewBox
   ],
   imports: [
     HttpClientModule,
@@ -57,6 +59,8 @@ import {MatPaginatorModule} from "@angular/material/paginator";
     MatTreeModule,
     MatSelectModule,
     MatPaginatorModule,
+    MatSortModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
