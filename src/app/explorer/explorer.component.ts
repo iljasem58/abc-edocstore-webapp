@@ -52,7 +52,6 @@ export class ExplorerComponent implements OnInit {
   }
 
   setRowClicked(value:any){
-    console.log(value)
     this.selectedRow = value;
   }
 

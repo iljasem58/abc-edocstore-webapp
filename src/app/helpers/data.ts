@@ -67,17 +67,7 @@ export const TREE_DATA: Folders[] = [
   },
 ];
 
-export const DEFAULT_DATA: PeriodicElement[] = [
-  {
-    format: 'qwerty type',
-    name: 'default',
-    id: 'dsa72hs@',
-    created: '01.01.1991',
-    modified: '02.01.1991',
-    type: 'qwerty content',
-    comment: ' ',
-  },
-];
+export const DEFAULT_DATA: PeriodicElement[] = [];
 
 export const DATA_COLLECTION: DataCollection[] = [
   {
@@ -101,15 +91,17 @@ export const DATA_COLLECTION: DataCollection[] = [
         modified: '31.02.2021',
         type: 'document',
         comment: '',
+        img: 'https://via.placeholder.com/1000x1000.png?text=February+joiners+ID=feb21',
       },
       {
         format: 'docx',
         name: 'December joiners',
-        id: 'feb21',
+        id: 'dec21',
         created: '01.12.2021',
         modified: '31.12.2021',
         type: 'document',
         comment: '',
+        img: 'https://binaries.templates.cdn.office.net/support/templates/en-us/lt00112764_quantized.png',
       },
     ],
   },

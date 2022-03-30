@@ -39,7 +39,7 @@ export class ExplorerTableComponent implements OnInit, OnChanges {
     'comment',
     'preview',
   ];
-  // dataSource = this.setTableData(this.selectedFolder);
+  
   dataSource = new MatTableDataSource<PeriodicElement>(DEFAULT_DATA);
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -69,12 +69,16 @@ export class ExplorerTableComponent implements OnInit, OnChanges {
         folder.data.forEach((item)=>{
           if (item.id === row.id) {
             this.img_path = item.img;
+            console.log(item)
           }
         })
       }
       return;
     });
-    this.dialog.open(PreviewBox, {backdropClass:"back-drop", data: {img: this.img_path}});
+    this.dialog.open(PreviewBox, {
+      backdropClass:"back-drop",
+      data: {img: this.img_path}
+    });
   }
 
   ngOnChanges(): void {
@@ -99,7 +103,7 @@ export class ExplorerTableComponent implements OnInit, OnChanges {
 
 @Component({
   selector: 'preview-box',
-  templateUrl: '/preview-box.html',
+  templateUrl: 'preview-box.html',
 })
 
 export class PreviewBox {

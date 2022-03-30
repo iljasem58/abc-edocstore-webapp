@@ -6,3 +6,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .back-drop{
   background-color: rgba(0, 0, 0, 0.8);
 }
+
+.no_data{
+  display: flex;
+  justify-content: center;
+}

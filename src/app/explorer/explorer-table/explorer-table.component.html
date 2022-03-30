@@ -1,5 +1,6 @@
 <div class="mat-elevation-z8">
-  <table mat-table [dataSource]="dataSource" matSort matSortDirection="asc">
+  <table mat-table [dataSource]="dataSource" *ngIf="dataSource.data.length > 0"
+    matSort matSortDirection="asc">
 
     <ng-container matColumnDef="format">
       <th mat-header-cell *matHeaderCellDef mat-sort-header
@@ -55,23 +56,12 @@
     ></tr>
   </table>
 
-<!-- <div>-->
-<!--    <h3>-->
-<!--      Click Log-->
-<!--    </h3>-->
-<!--  </div>-->
+  <div class="no_data" *ngIf="dataSource.data.length === 0">
+      No data
+  </div>
 
-<!--  <div *ngIf="!clickedRows.size">-->
-<!--    Clicked rows will be logged here-->
-<!--  </div>-->
-
-<!--  <ul>-->
-<!--    <li *ngFor="let clickedRow of clickedRows">-->
-<!--      Clicked on {{clickedRow.id}}-->
-<!--    </li>-->
-<!--  </ul>-->
-
-  <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+  <mat-paginator *ngIf="dataSource.data.length > 0"
+                 [pageSizeOptions]="[5, 10, 20]"
                  showFirstLastButtons
                  aria-label="Select page of periodic elements">
   </mat-paginator>
