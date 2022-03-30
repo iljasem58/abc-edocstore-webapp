@@ -2,6 +2,7 @@ import {
   AfterViewInit,
   Component,
   EventEmitter,
+  Inject,
   Input,
   OnChanges,
   OnInit, Output,
@@ -12,7 +13,11 @@ import {LiveAnnouncer} from '@angular/cdk/a11y';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatSort, Sort} from '@angular/material/sort';
 import {DATA_COLLECTION, DEFAULT_DATA, PeriodicElement} from 'src/app/helpers/data';
-import {MatDialog} from '@angular/material/dialog';
+import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
+
+export interface DialogData{
+  img: string;
+}
 
 @Component({
   selector: 'app-explorer-table',
@@ -22,6 +27,7 @@ import {MatDialog} from '@angular/material/dialog';
 export class ExplorerTableComponent implements OnInit, OnChanges {
   @Input() selectedFolder: string;
   @Output() clickedRow: EventEmitter<string> = new EventEmitter<string>();
+  img_path: string | undefined;
 
   displayedColumns: string[] = [
     'format',
@@ -57,8 +63,18 @@ export class ExplorerTableComponent implements OnInit, OnChanges {
     this.clickedRow.emit(row);
   }
 
-  showPreview() {
-    this.dialog.open(PreviewBox, {backdropClass:"back-drop"});
+  showPreview(row:any) {
+    DATA_COLLECTION.forEach((folder) => {
+      if(this.selectedFolder === folder.folderName){
+        folder.data.forEach((item)=>{
+          if (item.id === row.id) {
+            this.img_path = item.img;
+          }
+        })
+      }
+      return;
+    });
+    this.dialog.open(PreviewBox, {backdropClass:"back-drop", data: {img: this.img_path}});
   }
 
   ngOnChanges(): void {
@@ -79,14 +95,6 @@ export class ExplorerTableComponent implements OnInit, OnChanges {
   }
 
   clickedRows = new Set<PeriodicElement>();
-
-  announceSortChange(sortState: Sort) {
-    if (sortState.direction) {
-      this._liveAnnouncer.announce(`Sorted ${sortState.direction}ending`);
-    } else {
-      this._liveAnnouncer.announce('Sorting cleared');
-    }
-  }
 }
 
 @Component({
@@ -94,5 +102,9 @@ export class ExplorerTableComponent implements OnInit, OnChanges {
   templateUrl: '/preview-box.html',
 })
 
-export class PreviewBox {}
+export class PreviewBox {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData) {
+
+  }
+}
 

@@ -1,6 +1,7 @@
+<h1 mat-dialog-title>{{data.img}}</h1>
 <mat-dialog-content class="mat-typography">
-  <img id="test" data-id="alpha" src="https://via.placeholder.com/1000x1000.png?text=January joiners ID=jan21"/>
+  <img id="test" data-id="alpha" [src]="data.img"/>
 </mat-dialog-content>
-<mat-dialog-actions>
+<mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cancel</button>
 </mat-dialog-actions>

@@ -32,6 +32,7 @@ export class ExplorerComponent implements OnInit {
     {value: 'Done', viewValue: 'Done'},
     {value: 'In progress', viewValue: 'In progress'},
     {value: 'Review the document', viewValue: 'Please review'},
+    {value: 'Not finished', viewValue: 'Not finished'},
     {value: 'Modify', viewValue: 'Modify'},
   ];
 
