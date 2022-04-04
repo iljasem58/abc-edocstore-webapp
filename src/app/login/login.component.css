@@ -11,6 +11,10 @@ mat-card {
   margin: auto;
 }
 
+button:disabled{
+  cursor: not-allowed;
+}
+
 .form {
   min-width: 150px;
   width: 100%;
@@ -26,5 +30,10 @@ mat-card {
 
 .login {
   margin-top: 2rem;
-  width: 100%;
+  width: 45%;
+}
+
+.login-btns {
+  display: flex;
+  justify-content: space-between;
 }

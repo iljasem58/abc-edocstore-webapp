@@ -1,3 +1,4 @@
+import { AuthGuardService } from './services/auth-guard.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {MatSelectModule} from "@angular/material/select";
@@ -27,6 +28,8 @@ import {MatOptionModule} from "@angular/material/core";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatSortModule} from "@angular/material/sort";
 import {MatDialogModule} from '@angular/material/dialog';
+import { AuthCallbackComponent } from './auth-callback/auth-callback.component';
+import { CallApiComponent } from './call-api/call-api.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +43,9 @@ import {MatDialogModule} from '@angular/material/dialog';
     CreateRepositoryComponent,
     ExplorerTableComponent,
     LoginComponent,
-    PreviewBox
+    PreviewBox,
+    AuthCallbackComponent,
+    CallApiComponent
   ],
   imports: [
     HttpClientModule,
@@ -62,7 +67,7 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatSortModule,
     MatDialogModule,
   ],
-  providers: [],
+  providers: [AuthGuardService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

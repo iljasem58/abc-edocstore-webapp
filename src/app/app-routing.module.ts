@@ -1,3 +1,6 @@
+import { CallApiComponent } from './call-api/call-api.component';
+import { AuthCallbackComponent } from './auth-callback/auth-callback.component';
+import { AuthGuardService } from './services/auth-guard.service';
 import { LoginComponent } from './login/login.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -23,25 +26,35 @@ const routes: Routes = [
     component: LoginComponent,
   },
   {
-    path: 'collection',
-    component: CollectionComponent,
+    path: 'auth-callback',
+    component: AuthCallbackComponent,
   },
   {
-    path: 'repositories',
-    component: RepositoriesComponent,
+    path: 'call-api',
+    component: CallApiComponent,
+    canActivate: [AuthGuardService]
   },
-  {
-    path: 'repositories/new',
-    component: CreateRepositoryComponent,
-  },
+  // {
+  //   path: 'collection',
+  //   component: CollectionComponent,
+  // },
+  // {
+  //   path: 'repositories',
+  //   component: RepositoriesComponent,
+  // },
+  // {
+  //   path: 'repositories/new',
+  //   component: CreateRepositoryComponent,
+  // },
   {
     path: 'explorer',
     component: ExplorerComponent,
+    canActivate: [AuthGuardService],
   },
-  {
-    path: 'license',
-    component: LicenseComponent,
-  },
+  // {
+  //   path: 'license',
+  //   component: LicenseComponent,
+  // },
 ];
 
 @NgModule({

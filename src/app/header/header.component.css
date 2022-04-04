@@ -19,3 +19,11 @@ mat-icon {
   font-size: 40px;
   margin-right: 5px;
 }
+
+mat-toolbar-row {
+  padding-right: 5rem;
+}
+
+.logout {
+  text-decoration: underline;
+}
