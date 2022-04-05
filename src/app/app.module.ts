@@ -1,7 +1,7 @@
 import { AuthGuardService } from './services/auth-guard.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {MatSelectModule} from "@angular/material/select";
+import { MatSelectModule } from '@angular/material/select';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -20,16 +20,18 @@ import { MatTreeModule } from '@angular/material/tree';
 import { MatIconModule } from '@angular/material/icon';
 import { CreateRepositoryComponent } from './repositories/create-repository/create-repository.component';
 import { MatExpansionModule } from '@angular/material/expansion';
-import {ExplorerTableComponent, PreviewBox} from './explorer/explorer-table/explorer-table.component';
+import {
+  ExplorerTableComponent,
+  PreviewBox,
+} from './explorer/explorer-table/explorer-table.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
-import {MatOptionModule} from "@angular/material/core";
-import {MatPaginatorModule} from "@angular/material/paginator";
-import {MatSortModule} from "@angular/material/sort";
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatOptionModule } from '@angular/material/core';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatDialogModule } from '@angular/material/dialog';
 import { AuthCallbackComponent } from './auth-callback/auth-callback.component';
-import { CallApiComponent } from './call-api/call-api.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +47,6 @@ import { CallApiComponent } from './call-api/call-api.component';
     LoginComponent,
     PreviewBox,
     AuthCallbackComponent,
-    CallApiComponent
   ],
   imports: [
     HttpClientModule,

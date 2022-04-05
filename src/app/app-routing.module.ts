@@ -1,4 +1,3 @@
-import { CallApiComponent } from './call-api/call-api.component';
 import { AuthCallbackComponent } from './auth-callback/auth-callback.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { LoginComponent } from './login/login.component';
@@ -26,13 +25,8 @@ const routes: Routes = [
     component: LoginComponent,
   },
   {
-    path: 'auth-callback',
+    path: 'auth/callback',
     component: AuthCallbackComponent,
-  },
-  {
-    path: 'call-api',
-    component: CallApiComponent,
-    canActivate: [AuthGuardService]
   },
   // {
   //   path: 'collection',
@@ -51,10 +45,10 @@ const routes: Routes = [
     component: ExplorerComponent,
     canActivate: [AuthGuardService],
   },
-  // {
-  //   path: 'license',
-  //   component: LicenseComponent,
-  // },
+  {
+    path: 'auth/renew',
+    component: LicenseComponent,
+  },
 ];
 
 @NgModule({

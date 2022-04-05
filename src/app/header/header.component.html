@@ -24,7 +24,7 @@
           CMIS Repositories
         </a>
       </li> -->
-      <li>
+      <!-- <li>
         <a
           routerLink="/explorer"
           routerLinkActive="mat-raised-button"
@@ -33,7 +33,7 @@
         >
           CMIS Explorer
         </a>
-      </li>
+      </li> -->
       <!-- <li>
         <a
           routerLink="/license"
@@ -44,9 +44,14 @@
           License Info
         </a>
       </li> -->
-      <li>
-        <a class="logout" routerLink="/login" mat-button color="accent">
-          Logout
+      <li *ngIf="user">
+        <a class="logout" (click)="logOut()" mat-button color="accent">
+          {{ user.profile.given_name }} - logout
+        </a>
+      </li>
+      <li *ngIf="!user">
+        <a class="logout" (click)="logOut()" mat-button color="accent">
+          profilename - logout
         </a>
       </li>
     </ul>

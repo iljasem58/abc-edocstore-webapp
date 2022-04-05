@@ -1,19 +1,8 @@
 <mat-card>
-  <mat-card-title>Login</mat-card-title>
   <form class="form">
-    <mat-form-field class="full-width" appearance="fill">
-      <mat-label>ID</mat-label>
-      <input matInput />
-    </mat-form-field>
-    <mat-form-field class="full-width mat-form-field-top" appearance="fill">
-      <mat-label>Password</mat-label>
-      <input matInput />
-    </mat-form-field>
-    <div class="login-btns">
+    <div class="loader">Loading...</div>
+    <a [routerLink]="['../explorer']">
       <button mat-raised-button class="login" color="primary">LOGIN</button>
-      <button mat-raised-button disabled class="login" color="primary">
-        call api
-      </button>
-    </div>
+    </a>
   </form>
 </mat-card>
