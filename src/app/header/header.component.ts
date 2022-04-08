@@ -1,27 +1,32 @@
 import { AuthService } from './../services/auth.service';
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { User } from 'oidc-client';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
 })
-export class HeaderComponent implements OnInit {
-  appTitle: string = 'eDocStore Administrative Panel';
-  user: any = null;
-  isAuth: boolean = false;
+export class HeaderComponent implements OnInit, OnDestroy {
+  public appTitle: string = 'eDocStore Administrative Panel';
+  public user: any = null;
+  private sub: Subscription;
 
   constructor(private authService: AuthService) {}
 
-  //?????????
   ngOnInit(): void {
-    setTimeout(() => {
-      this.user = this.authService.getUser();
-    }, 1000);
+    this.sub = this.authService.getUser().subscribe((userData) => {
+      console.log('users', userData);
+      this.user = userData
+    });
   }
 
   logOut(): void {
     this.authService.signOut();
+  }
+
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
   }
 }

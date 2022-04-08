@@ -1,4 +1,5 @@
-import { AuthGuardService } from './services/auth-guard.service';
+import { InterceptorService } from './services/interceptor.service';
+import { AuthGuard } from './services/auth.guard';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatSelectModule } from '@angular/material/select';
@@ -25,7 +26,7 @@ import {
   PreviewBox,
 } from './explorer/explorer-table/explorer-table.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { MatOptionModule } from '@angular/material/core';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -68,7 +69,10 @@ import { AuthCallbackComponent } from './auth-callback/auth-callback.component';
     MatSortModule,
     MatDialogModule,
   ],
-  providers: [AuthGuardService],
+  providers: [
+    AuthGuard,
+    { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

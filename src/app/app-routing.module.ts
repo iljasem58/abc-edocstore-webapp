@@ -1,5 +1,5 @@
 import { AuthCallbackComponent } from './auth-callback/auth-callback.component';
-import { AuthGuardService } from './services/auth-guard.service';
+import { AuthGuard } from './services/auth.guard';
 import { LoginComponent } from './login/login.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -43,7 +43,7 @@ const routes: Routes = [
   {
     path: 'explorer',
     component: ExplorerComponent,
-    canActivate: [AuthGuardService],
+    canActivate: [AuthGuard],
   },
   {
     path: 'auth/renew',

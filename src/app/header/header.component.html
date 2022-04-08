@@ -45,13 +45,9 @@
         </a>
       </li> -->
       <li *ngIf="user">
-        <a class="logout" (click)="logOut()" mat-button color="accent">
-          {{ user.profile.given_name }} - logout
-        </a>
-      </li>
-      <li *ngIf="!user">
-        <a class="logout" (click)="logOut()" mat-button color="accent">
-          profilename - logout
+        <a (click)="logOut()" mat-button color="accent">
+          <span>Hello, </span
+          ><span class="logout">{{ user.profile.given_name }} - logout</span>
         </a>
       </li>
     </ul>

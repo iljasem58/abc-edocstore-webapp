@@ -64,7 +64,7 @@
         },
         "serve": {
           "options": {
-            "port": 10006
+            "port": 10014
           },
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
