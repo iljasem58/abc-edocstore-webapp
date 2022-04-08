@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import {
   UserManager,
@@ -15,7 +16,7 @@ export class AuthService {
   private user: User = null as any;
   private systemUser = new Subject<any>();
 
-  constructor() {
+  constructor(private router: Router) {
     this.manager.getUser().then((user) => {
       this.user = user as any;
     });
@@ -41,16 +42,12 @@ export class AuthService {
     return this.manager.signinRedirect();
   }
 
-  signOut(): Promise<void> {
-    return this.manager.signoutRedirect();
+  async signOut(): Promise<void> {
+    await this.manager.signoutRedirect();
+    const user = null;
+    this.systemUser.next(user);
   }
 
-  // completeAuthentication(): Promise<void> {
-  //   return this.manager.signinRedirectCallback().then((user) => {
-  //     this.user = user;
-  //   });
-  // }
-  //or as async method
   async completeAuthentication(): Promise<void> {
     const user = await this.manager.signinRedirectCallback();
     this.user = user;
@@ -59,19 +56,18 @@ export class AuthService {
 }
 
 export function getClientSettings(): UserManagerSettings {
-  userStore: new WebStorageStateStore({ store: window.localStorage });
+  // userStore: new WebStorageStateStore({ store: window.localStorage });
 
   return {
     authority: 'https://elietaauth-dev-ic.abcsoftware.lv',
     client_id: 'elieta-edocstore-webapp-local',
     redirect_uri: window.location.origin + '/auth/callback',
-    post_logout_redirect_uri: window.location.origin + 'auth/logout',
+    post_logout_redirect_uri: window.location.origin + '/auth/post-logout',
     silent_redirect_uri: window.location.origin + '/auth/renew',
     scope: 'openid employee edocstore',
     response_type: 'code',
-    filterProtocolClaims: true,
-    loadUserInfo: true,
     automaticSilentRenew: false,
+    revokeAccessTokenOnSignout: true,
     includeIdTokenInSilentRenew: false,
   };
 }

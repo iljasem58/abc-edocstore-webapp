@@ -10,16 +10,12 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { HeaderComponent } from './header/header.component';
 import { MatCardModule } from '@angular/material/card';
-import { RepositoriesComponent } from './repositories/repositories.component';
 import { MatTableModule } from '@angular/material/table';
-import { CollectionComponent } from './collection/collection.component';
 import { ExplorerComponent } from './explorer/explorer.component';
-import { LicenseComponent } from './license/license.component';
 import { FooterComponent } from './footer/footer.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatTreeModule } from '@angular/material/tree';
 import { MatIconModule } from '@angular/material/icon';
-import { CreateRepositoryComponent } from './repositories/create-repository/create-repository.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import {
   ExplorerTableComponent,
@@ -33,21 +29,19 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AuthCallbackComponent } from './auth-callback/auth-callback.component';
+import { AuthLogoutComponent } from './auth-logout/auth-logout.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    RepositoriesComponent,
-    CollectionComponent,
     ExplorerComponent,
-    LicenseComponent,
     FooterComponent,
-    CreateRepositoryComponent,
     ExplorerTableComponent,
     LoginComponent,
     PreviewBox,
     AuthCallbackComponent,
+    AuthLogoutComponent,
   ],
   imports: [
     HttpClientModule,
